@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+    commands:
+      - yum update -y
+      - yum install -y jq
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
+      - export PATH=$PATH:./sonar-scanner-3.3.0.1492-linux/bin/
+  pre_build:
+    commands:
+      - sonar-scanner -X -Dsonar.projectKey=test -Dsonar.host.url=http://13.235.132.186:9000/ -Dsonar.login=d9954fa26ddcd90560eb9c8bcd23b8bafc0eb4c2 -Dsonar.scm.disabled=true
+      - sleep 5
+      - curl http://13.235.132.186:9000/api/qualitygates/project_status?projectKey=test > analysis.json
+      - cat analysis.json
+  build:
+    commands:
+      - echo Building Project
+      - echo Finished Building
