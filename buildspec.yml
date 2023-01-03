@@ -16,6 +16,10 @@ phases:
       - sleep 5
       - curl http://13.235.132.186:9000/api/qualitygates/project_status?projectKey=test > analysis.json
       - cat analysis.json
+      - mvn sonar:sonar \
+        -Dsonar.projectKey=test \
+        -Dsonar.host.url=http://13.235.132.186:9000 \
+        -Dsonar.login=d9954fa26ddcd90560eb9c8bcd23b8bafc0eb4c2
   build:
     commands:
       - echo Building Project
