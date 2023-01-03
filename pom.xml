@@ -29,8 +29,7 @@
     </site>
   </distributionManagement>
 <!-- this is important for sonar-packaging-maven-plugin -->
-  <packaging>sonar-plugin</packaging>
- 
+  
   <dependencies>
     <dependency>
       <!-- groupId has changed to 'org.sonarsource.api.plugin' starting on version 9.5 -->
