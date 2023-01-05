@@ -12,11 +12,11 @@ phases:
       - export PATH=$PATH:./sonar-scanner-3.3.0.1492-linux/bin/
   pre_build:
     commands:
-      - sonar-scanner -Dsonar.projectKey=test -Dsonar.host.url=http://13.232.145.192:9000/ -Dsonar.login=11c17acedaddefd353c2ab3fde31b36017d104f7 -Dsonar.scm.disabled=true
+      - sonar-scanner -Dsonar.projectKey=test -Dsonar.host.url=http://13.233.7.249:9000/ -Dsonar.login=11c17acedaddefd353c2ab3fde31b36017d104f7 -Dsonar.scm.disabled=true
       - sleep 5
-      - curl http://13.232.145.192:9000/api/qualitygates/project_status?projectKey=test > analysis.json
+      - curl http://13.233.7.249:9000/api/qualitygates/project_status?projectKey=test > analysis.json
       - cat analysis.json
-      - mvn sonar:sonar -X -Dsonar.projectKey=test -Dsonar.host.url=http://13.232.145.192:9000/ -Dsonar.login=11c17acedaddefd353c2ab3fde31b36017d104f7
+      - mvn sonar:sonar -X -Dsonar.projectKey=test -Dsonar.host.url=http://13.233.7.249:9000/ -Dsonar.login=11c17acedaddefd353c2ab3fde31b36017d104f7
   build:
     commands:
       - echo Building Project
